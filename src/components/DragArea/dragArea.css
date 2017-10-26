@@ -9,3 +9,7 @@
 .container:first-child {
   border-right: solid 1px #ccc;
 }
+.container img {
+  max-width: 100%;
+  height: auto;
+}

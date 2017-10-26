@@ -8,7 +8,7 @@ export default class Result extends Component {
     super(props)
 
     this.state = {
-      index: 1,
+      index: 2,
       fixedIndex: 1,
       inverseIndex: 1
     }

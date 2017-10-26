@@ -30,10 +30,10 @@ export const extractFile = (e, cntxt) => (
 
     reader.readAsDataURL(fileData[0])
     reader.onload = (e) => {
-      const fileName = cntxt + '.png'
-      createPNG(fileName, e.currentTarget.result)
-
-      dispatch(addFile(e.currentTarget.result, cntxt))
+      createPNG(cntxt, e.currentTarget.result).then((val) => {
+        console.log(val)
+        dispatch(addFile(e.currentTarget.result, cntxt))
+      })
     }
   }
 )
