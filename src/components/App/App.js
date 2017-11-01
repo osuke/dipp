@@ -5,8 +5,12 @@ import DragArea from '../../containers/DragArea'
 import Result from '../../containers/Result'
 
 export default class App extends Component {
-  componentWillUpdate (nextProps) {
-    if (!this.props.file.diffImage && nextProps.file.diffImage) {
+  componentDidUpdate () {
+    if (this.props.file.before.obj && this.props.file.after.obj && !this.props.file.diff.obj) {
+      this.props.createDiffFile()
+    }
+
+    if (this.props.app.scene === 'upload' && this.props.file.diff.obj) {
       this.props.changeScene('result')
     }
   }
@@ -14,8 +18,8 @@ export default class App extends Component {
     if (!this.props.app.scene || this.props.app.scene === 'upload') {
       return (
         <div className={styles.container}>
-          <DragArea src={this.props.file.beforeImage} cntxt="before" />
-          <DragArea src={this.props.file.afterImage} cntxt="after" />
+          <DragArea {...this.props.file.before} cntxt="before" />
+          <DragArea {...this.props.file.after} cntxt="after" />
         </div>
       )
     } else {

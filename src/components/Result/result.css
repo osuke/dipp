@@ -5,6 +5,7 @@
   height: 100%;
 }
 .tabs > section {
+  overflow-y: scroll;
   outline: none;
   height: 100%;
   justify-content: center;

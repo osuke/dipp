@@ -17,7 +17,7 @@ export default class {
     pixelmatch(this.beforeImg.data, this.afterImg.data, diff.data, this.beforeImg.width, this.beforeImg.height, {threshold: 0.1})
     const cws = diff.pack()
     cws.on('end', () => {
-      this.callbackFnc()
+      setTimeout(this.callbackFnc, 2000)
     })
     cws.pipe(fs.createWriteStream('diff.png'))
   }

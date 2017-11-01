@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import App from '../components/App/App'
 import { changeScene } from '../actions/app'
+import { createDiffFile } from '../actions/file'
 
 const mapStateToProps = (state) => {
   return state
@@ -9,7 +10,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    changeScene: (sceneName) => { dispatch(changeScene(sceneName)) }
+    changeScene: (sceneName) => { dispatch(changeScene(sceneName)) },
+    createDiffFile: () => { dispatch(createDiffFile()) }
   }
 }
 

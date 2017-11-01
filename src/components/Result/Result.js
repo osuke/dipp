@@ -22,13 +22,13 @@ export default class Result extends Component {
       <div className={styles.container}>
         <Tabs className={styles.tabs} index={this.state.index} onChange={this.handleTabChange.bind(this)} fixed={true}>
           <Tab label="Before">
-            <ImageDisplay src={this.props.file.beforeImage} />
+            <ImageDisplay {...this.props.file.before} />
           </Tab>
           <Tab label="After">
-            <ImageDisplay src={this.props.file.afterImage} />
+            <ImageDisplay {...this.props.file.after} />
           </Tab>
           <Tab label="Diff">
-            <ImageDisplay src={this.props.file.diffImage} />
+            <ImageDisplay {...this.props.file.diff} />
           </Tab>
         </Tabs>
       </div>

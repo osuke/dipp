@@ -1,5 +1,6 @@
 .container {
   align-self: center;
+  max-height: 90%;
 }
 .container img {
   max-width: 100%;

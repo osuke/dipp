@@ -1,8 +1,8 @@
 import React from 'react'
 import styles from './imageDisplay.css'
 
-export default ({ src }) => (
+export default ({ obj, width, height }) => (
   <div className={styles.container}>
-    <img src={src} />
+    <img src={obj.src} width={width} height={height} />
   </div>
 )
