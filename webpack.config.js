@@ -41,6 +41,9 @@ module.exports = {
             options: {
               plugins: [require('postcss-import'), require('csswring')]
             }
+          },
+          {
+            loader: 'sass-loader'
           }
         ]
       }

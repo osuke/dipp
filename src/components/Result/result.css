@@ -10,3 +10,8 @@
   height: 100%;
   justify-content: center;
 }
+.close {
+  right: 40px;
+  bottom: 40px;
+  position: absolute !important;
+}

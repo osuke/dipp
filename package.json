@@ -34,8 +34,10 @@
     "eslint-plugin-node": "^5.2.0",
     "eslint-plugin-promise": "^3.6.0",
     "eslint-plugin-standard": "^3.0.1",
+    "node-sass": "^4.5.3",
     "postcss-import": "^11.0.0",
     "postcss-loader": "^2.0.8",
+    "sass-loader": "^6.0.6",
     "style-loader": "^0.19.0",
     "webpack": "^3.8.1"
   }

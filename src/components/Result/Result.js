@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import styles from './result.css'
 import ImageDisplay from '../ImageDisplay/ImageDisplay'
-import {Tab, Tabs} from 'react-toolbox'
+import { Tab, Tabs, Button, IconButton } from 'react-toolbox'
 
 export default class Result extends Component {
   constructor (props) {
@@ -17,6 +17,11 @@ export default class Result extends Component {
   handleTabChange (index) {
     this.setState({index})
   }
+
+  refresh () {
+    location.reload()
+  }
+
   render () {
     return (
       <div className={styles.container}>
@@ -31,6 +36,12 @@ export default class Result extends Component {
             <ImageDisplay {...this.props.file.diff} />
           </Tab>
         </Tabs>
+        <Button
+          className={styles.close}
+          icon='close'
+          floating accent
+          onClick={this.refresh}
+        />
       </div>
     )
   }
