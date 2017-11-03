@@ -43,6 +43,11 @@ export const extractFile = (e, cntxt) => (
           imageWidth = window.innerWidth / 2 - 20
           imageHeight = imageWidth / image.width * imageHeight
         }
+
+        if (imageHeight > window.innerHeight) {
+          imageHeight = window.innerHeight - 20
+          imageWidth = imageHeight / image.height * imageWidth
+        }
         const data = {
           src: image,
           width: imageWidth,
