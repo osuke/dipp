@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import createPNG from '../../utils/createPNG'
 import styles from './dragArea.css'
 
 export default class DragArea extends Component {

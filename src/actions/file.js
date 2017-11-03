@@ -77,8 +77,8 @@ export const createDiffFile = () => (
         })
       })
     })().then(() => {
-      const buff = fs.readFileSync('diff.png');  
-      const base64data = buff.toString('base64');
+      const buff = fs.readFileSync('diff.png')
+      const base64data = buff.toString('base64')
       let image = new window.Image()
       image.src = 'data:image/png;base64,' + base64data
       image.onload = () => {

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import resetCss from 'reset-css/reset.css'
+import resetCSS from 'reset-css/reset.css'
 import styles from './app.css'
 import DragArea from '../../containers/DragArea'
 import Result from '../../containers/Result'

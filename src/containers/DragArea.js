@@ -1,4 +1,3 @@
-import React from 'react'
 import { connect } from 'react-redux'
 import DragArea from '../components/DragArea/DragArea'
 import { extractFile, createDiffFile, createPNGFile } from '../actions/file'
