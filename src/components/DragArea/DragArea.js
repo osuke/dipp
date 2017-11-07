@@ -20,14 +20,14 @@ export default class DragArea extends Component {
   dragOverHandler (e) {
     e.preventDefault()
     this.setState(() => {
-      return { eventName: 'dragOver'}
+      return { eventName: 'dragOver' }
     })
   }
 
   dragLeaveHandler (e) {
     e.preventDefault()
     this.setState(() => {
-      return { eventName: 'dragLeave'}
+      return { eventName: 'dragLeave' }
     })
   }
 

@@ -1,0 +1,11 @@
+{
+  "extends": "standard",
+  "plugins": [
+    "react"
+  ],
+  "rules": {
+    "no-unused-vars": 0,
+    "no-extra-parens": 0,
+    "no-new": 0
+  }
+}

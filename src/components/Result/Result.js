@@ -20,7 +20,7 @@ export default class Result extends Component {
   }
 
   refresh () {
-    location.reload()
+    window.location.reload()
   }
 
   render () {

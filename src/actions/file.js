@@ -30,7 +30,7 @@ export const addDiffFile = (data) => (
 
 export const extractFile = (e, cntxt) => (
   (dispatch) => {
-    const reader = new FileReader()
+    const reader = new window.FileReader()
     const image = new window.Image()
 
     reader.readAsDataURL(e.dataTransfer.files[0])

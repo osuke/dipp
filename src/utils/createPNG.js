@@ -8,7 +8,7 @@ export default (fileName, base64) => (
       if (err) {
         return
       }
-    
+
       resolve('File created')
     })
   })
