@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import styles from './result.css'
 import ImageDisplay from '../ImageDisplay/ImageDisplay'
 import { Tab, Tabs, Button, IconButton } from 'react-toolbox'
-import theme from './_theme.scss'
+import theme from './theme.css'
 
 export default class Result extends Component {
   constructor (props) {
