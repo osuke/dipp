@@ -6,7 +6,7 @@ import Result from '../../containers/Result'
 
 export default class App extends Component {
   componentDidUpdate () {
-    if (this.props.file.before.obj && this.props.file.after.obj && !this.props.file.diff.obj) {
+    if (this.props.file.before.file && this.props.file.after.file && !this.props.file.diff.file) {
       this.props.createDiffFile()
     }
 
@@ -14,6 +14,7 @@ export default class App extends Component {
       this.props.changeScene('result')
     }
   }
+
   render () {
     if (!this.props.app.scene || this.props.app.scene === 'upload') {
       return (
