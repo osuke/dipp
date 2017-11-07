@@ -8,7 +8,7 @@ const url = require('url')
 let mainWindow
  
 const createWindow = () => {
-  mainWindow = new BrowserWindow({width: 1200, height: 800})
+  mainWindow = new BrowserWindow({width: 1200, height: 800, title: ''})
  
   mainWindow.loadURL(url.format({
     pathname: path.join(__dirname, 'index.html'),
