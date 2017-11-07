@@ -21,7 +21,7 @@ export default (fileName, base64) => (
         })
       })
     } else {
-      fs.writeFile(fileName + '.png', arr[1], {encoding: 'base64'}, (err) => {
+      fs.writeFile('./tmp/' + fileName + '.png', arr[1], {encoding: 'base64'}, (err) => {
         if (err) {
           return
         }

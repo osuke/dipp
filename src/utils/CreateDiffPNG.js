@@ -6,8 +6,8 @@ export default class {
   constructor (callbackFnc) {
     this.callbackFnc = callbackFnc
     this.filesRead = 0
-    this.beforeImg = fs.createReadStream('before.png').pipe(new PNG()).on('parsed', this.doneReading.bind(this))
-    this.afterImg = fs.createReadStream('after.png').pipe(new PNG()).on('parsed', this.doneReading.bind(this))
+    this.beforeImg = fs.createReadStream('./tmp/before.png').pipe(new PNG()).on('parsed', this.doneReading.bind(this))
+    this.afterImg = fs.createReadStream('./tmp/after.png').pipe(new PNG()).on('parsed', this.doneReading.bind(this))
   }
 
   doneReading () {
@@ -19,6 +19,6 @@ export default class {
     cws.on('end', () => {
       setTimeout(this.callbackFnc, 2000)
     })
-    cws.pipe(fs.createWriteStream('diff.png'))
+    cws.pipe(fs.createWriteStream('./tmp/diff.png'))
   }
 }
