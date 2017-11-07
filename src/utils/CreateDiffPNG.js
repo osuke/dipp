@@ -12,10 +12,13 @@ export default class {
 
   doneReading () {
     if (++this.filesRead < 2) return
+
     const diff = new PNG({ width: this.beforeImg.width, height: this.beforeImg.height })
 
     pixelmatch(this.beforeImg.data, this.afterImg.data, diff.data, this.beforeImg.width, this.beforeImg.height, {threshold: 0.1})
+
     const cws = diff.pack()
+
     cws.on('end', () => {
       setTimeout(this.callbackFnc, 2000)
     })

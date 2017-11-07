@@ -32,6 +32,7 @@ export const extractFile = (e, cntxt) => (
   (dispatch) => {
     const reader = new FileReader()
     const image = new window.Image()
+
     reader.readAsDataURL(e.dataTransfer.files[0])
     reader.onload = (e) => {
       image.src = e.currentTarget.result
@@ -61,34 +62,34 @@ export const extractFile = (e, cntxt) => (
 )
 
 export const createPNGFile = (cntxt, data) => (
-  (dispatch) => {
-    createPNG(cntxt, data).then((val) => {
-      dispatch(generateFile(cntxt))
-    })
+  async (dispatch) => {
+    await createPNG(cntxt, data)
+    dispatch(generateFile(cntxt))
   }
 )
 
 export const createDiffFile = () => (
-  (dispatch) => {
-    (() => {
+  async (dispatch) => {
+    await (() => {
       return new Promise((resolve, reject) => {
         new CreateDiffPNG(() => {
           resolve()
         })
       })
-    })().then(() => {
-      const buff = fs.readFileSync('./tmp/diff.png')
-      const base64data = buff.toString('base64')
-      let image = new window.Image()
-      image.src = 'data:image/png;base64,' + base64data
-      image.onload = () => {
-        const data = {
-          src: image,
-          width: image.width,
-          height: image.height
-        }
-        dispatch(addDiffFile(data))
+    })()
+
+    const buff = fs.readFileSync('./tmp/diff.png')
+    const base64data = buff.toString('base64')
+    let image = new window.Image()
+
+    image.src = 'data:image/png;base64,' + base64data
+    image.onload = () => {
+      const data = {
+        src: image,
+        width: image.width,
+        height: image.height
       }
-    })
+      dispatch(addDiffFile(data))
+    }
   }
 )
