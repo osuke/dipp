@@ -10,7 +10,6 @@
   "dependencies": {
     "babel-preset-react": "^6.24.1",
     "electron": "^1.7.9",
-    "jimp": "^0.2.28",
     "pixelmatch": "^4.0.2",
     "prop-types": "^15.6.0",
     "react": "15.5.0",
