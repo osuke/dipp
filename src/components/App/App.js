@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import resetCSS from 'reset-css/reset.css'
 import styles from './app.css'
 import DragArea from '../../containers/DragArea'
+import Loading from '../Loading/Loading'
 import Result from '../../containers/Result'
 
 export default class App extends Component {
@@ -16,11 +17,13 @@ export default class App extends Component {
   }
 
   render () {
-    if (!this.props.app.scene || this.props.app.scene === 'upload') {
+    console.log(this.props.file)
+    if (this.props.app.scene === 'upload') {
       return (
         <div className={styles.container}>
           <DragArea {...this.props.file.before} cntxt="before" />
           <DragArea {...this.props.file.after} cntxt="after" />
+          <Loading {...this.props.file} />
         </div>
       )
     } else {

@@ -5,6 +5,10 @@
   justify-content: center;
   align-items: center;
   transition: background 0.5s;
+  font-family: 'Courgette', cursive;
+  font-size: 20px;
+  letter-spacing: 0.06em;
+  color: #26A69A;
 }
 .container:first-child {
   border-right: solid 1px #eee;
