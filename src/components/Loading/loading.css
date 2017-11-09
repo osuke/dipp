@@ -1,0 +1,26 @@
+.icon {
+  font-size: 80px;
+  position: fixed;
+  top: calc(50vh - 40px);
+  left: calc(50vw - 40px);
+  margin: auto;
+  animation: rotateY 2s linear 0s infinite;
+  color: #26A69A;
+}
+@keyframes rotateY {
+  0% {
+    transform:rotateY(0deg);
+  }
+  25% {
+    transform:rotateY(90deg);
+  }
+  50% {
+    transform:rotateY(180deg);
+  }
+  75% {
+    transform:rotateY(270deg);
+  }
+  100% {
+    transform:rotateY(360deg);
+  }
+}

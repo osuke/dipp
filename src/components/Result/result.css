@@ -11,8 +11,11 @@
   justify-content: center;
 }
 .tab {
-  background: #3d5afe;
+  background: #26A69A;
   letter-spacing: 0.1em;
+  font-family: 'Courgette', cursive;
+  letter-spacing: 0.06em;
+  font-size: 18px;
 }
 .close {
   right: 40px;
