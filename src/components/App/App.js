@@ -17,7 +17,6 @@ export default class App extends Component {
   }
 
   render () {
-    console.log(this.props.file)
     if (this.props.app.scene === 'upload') {
       return (
         <div className={styles.container}>
