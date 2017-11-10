@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import { FontIcon } from 'react-toolbox'
 import styles from './loading.css'
+import PropTypes from 'prop-types'
 
-export default class App extends Component {
+export default class Loading extends Component {
   render () {
     if (this.props.before.file && this.props.after.file) {
       return (
@@ -14,4 +15,9 @@ export default class App extends Component {
       return null
     }
   }
+}
+
+Loading.propTypes = {
+  before: PropTypes.object.isRequired,
+  after: PropTypes.object.isRequired
 }

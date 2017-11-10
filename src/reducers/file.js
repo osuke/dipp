@@ -2,21 +2,21 @@ import { ADD_FILE, ADD_DIFF_FILE, GENERATE_FILE } from '../actions/file'
 
 const initialState = {
   before: {
-    obj: null,
-    width: null,
-    height: null,
+    obj: {},
+    width: 0,
+    height: 0,
     file: false
   },
   after: {
-    obj: null,
-    width: null,
-    height: null,
+    obj: {},
+    width: 0,
+    height: 0,
     file: false
   },
   diff: {
-    obj: null,
-    width: null,
-    height: null,
+    obj: {},
+    width: 0,
+    height: 0,
     file: false
   }
 }

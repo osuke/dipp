@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import styles from './dragArea.css'
+import PropTypes from 'prop-types'
 
 export default class DragArea extends Component {
   constructor (props) {
@@ -9,11 +10,15 @@ export default class DragArea extends Component {
     }
   }
 
+  shouldComponentUpdate (nextProps, nextState) {
+    return (nextProps.obj !== this.props.obj) || (this.state.eventName !== nextState.eventName)
+  }
+
   componentDidUpdate () {
-    if (!this.refs.canvas || this.props.file[this.props.cntxt].file) return
+    if (!this.refs.canvas || this.props.file) return
 
     this.ctx = this.refs.canvas.getContext('2d')
-    this.ctx.drawImage(this.props.file[this.props.cntxt].obj, 0, 0, this.props.file[this.props.cntxt].obj.width, this.props.file[this.props.cntxt].obj.height, 0, 0, this.props.file[this.props.cntxt].width, this.props.file[this.props.cntxt].height)
+    this.ctx.drawImage(this.props.obj, 0, 0, this.props.obj.width, this.props.obj.height, 0, 0, this.props.width, this.props.height)
     this.props.createPNGFile(this.props.cntxt, this.refs.canvas.toDataURL())
   }
 
@@ -32,7 +37,7 @@ export default class DragArea extends Component {
   }
 
   render () {
-    if (this.props.file[this.props.cntxt].obj) {
+    if (this.props.width && this.props.height) {
       return (
         <div
           className={styles.container}
@@ -41,7 +46,7 @@ export default class DragArea extends Component {
             e.preventDefault()
             this.props.extractFile(e, this.props.cntxt)
           }}>
-          <canvas ref="canvas" width={this.props.file[this.props.cntxt].width} height={this.props.file[this.props.cntxt].height}></canvas>
+          <canvas ref="canvas" width={this.props.width} height={this.props.height}></canvas>
         </div>
       )
     } else {
@@ -59,4 +64,14 @@ export default class DragArea extends Component {
       )
     }
   }
+}
+
+DragArea.propTypes = {
+  obj: PropTypes.object.isRequired,
+  file: PropTypes.bool.isRequired,
+  width: PropTypes.number.isRequired,
+  height: PropTypes.number.isRequired,
+  cntxt: PropTypes.string.isRequired,
+  extractFile: PropTypes.func.isRequired,
+  createPNGFile: PropTypes.func.isRequired
 }

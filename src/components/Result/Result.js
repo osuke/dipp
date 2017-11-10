@@ -3,6 +3,7 @@ import styles from './result.css'
 import ImageDisplay from '../ImageDisplay/ImageDisplay'
 import { Tab, Tabs, Button, IconButton } from 'react-toolbox'
 import theme from './theme.css'
+import PropTypes from 'prop-types'
 
 export default class Result extends Component {
   constructor (props) {
@@ -30,17 +31,17 @@ export default class Result extends Component {
           <Tab
             className={styles.tab}
             label="Before">
-            <ImageDisplay {...this.props.file.before} />
+            <ImageDisplay {...this.props.before} />
           </Tab>
           <Tab
             className={styles.tab}
             label="After">
-            <ImageDisplay {...this.props.file.after} />
+            <ImageDisplay {...this.props.after} />
           </Tab>
           <Tab
             className={styles.tab}
             label="Diff">
-            <ImageDisplay {...this.props.file.diff} />
+            <ImageDisplay {...this.props.diff} />
           </Tab>
         </Tabs>
         <Button
@@ -52,4 +53,10 @@ export default class Result extends Component {
       </div>
     )
   }
+}
+
+Result.propTypes = {
+  before: PropTypes.object.isRequired,
+  after: PropTypes.object.isRequired,
+  diff: PropTypes.object.isRequired
 }

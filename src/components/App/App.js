@@ -3,7 +3,8 @@ import resetCSS from 'reset-css/reset.css'
 import styles from './app.css'
 import DragArea from '../../containers/DragArea'
 import Loading from '../Loading/Loading'
-import Result from '../../containers/Result'
+import Result from '../Result/Result'
+import PropTypes from 'prop-types'
 
 export default class App extends Component {
   componentDidUpdate () {
@@ -11,13 +12,13 @@ export default class App extends Component {
       this.props.createDiffFile()
     }
 
-    if (this.props.app.scene === 'upload' && this.props.file.diff.obj) {
+    if (this.props.scene === 'upload' && this.props.file.diff.file) {
       this.props.changeScene('result')
     }
   }
 
   render () {
-    if (this.props.app.scene === 'upload') {
+    if (this.props.scene === 'upload') {
       return (
         <div className={styles.container}>
           <DragArea {...this.props.file.before} cntxt="before" />
@@ -27,8 +28,15 @@ export default class App extends Component {
       )
     } else {
       return (
-        <Result />
+        <Result {...this.props.file} />
       )
     }
   }
+}
+
+App.propTypes = {
+  scene: PropTypes.string.isRequired,
+  file: PropTypes.object.isRequired,
+  changeScene: PropTypes.func.isRequired,
+  createDiffFile: PropTypes.func.isRequired
 }

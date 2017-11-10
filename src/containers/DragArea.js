@@ -3,7 +3,7 @@ import DragArea from '../components/DragArea/DragArea'
 import { extractFile, createDiffFile, createPNGFile } from '../actions/file'
 
 const mapStateToProps = (state) => {
-  return state
+  return {}
 }
 
 const mapDispatchToProps = (dispatch) => {
