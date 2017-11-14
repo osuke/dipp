@@ -8,7 +8,6 @@
     "build": "webpack -w"
   },
   "dependencies": {
-    "babel-preset-react": "^6.24.1",
     "electron": "^1.7.9",
     "pixelmatch": "^4.0.2",
     "prop-types": "^15.6.0",
@@ -24,6 +23,7 @@
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
     "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
     "css-loader": "^0.28.7",
     "csswring": "^6.0.1",
     "eslint": "^4.9.0",
