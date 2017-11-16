@@ -8,7 +8,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    extractFile: (e, cntxt) => { dispatch(extractFile(e, cntxt)) },
+    extractFile: (data, cntxt) => { dispatch(extractFile(data, cntxt)) },
     createDiffFile: () => { dispatch(createDiffFile()) },
     createPNGFile: (cntxt, data) => { dispatch(createPNGFile(cntxt, data)) }
   }

@@ -28,12 +28,12 @@ export const addDiffFile = (data) => (
   }
 )
 
-export const extractFile = (e, cntxt) => (
+export const extractFile = (data, cntxt) => (
   (dispatch) => {
     const reader = new window.FileReader()
     const image = new window.Image()
 
-    reader.readAsDataURL(e.dataTransfer.files[0])
+    reader.readAsDataURL(data)
     reader.onload = (e) => {
       image.src = e.currentTarget.result
       image.onload = () => {
@@ -49,13 +49,15 @@ export const extractFile = (e, cntxt) => (
           imageHeight = window.innerHeight - 20
           imageWidth = imageHeight / image.height * imageWidth
         }
-        const data = {
+
+        const obj = {
           src: image,
           width: imageWidth,
           height: imageHeight,
           cntxt: cntxt
         }
-        dispatch(addFile(data))
+
+        dispatch(addFile(obj))
       }
     }
   }

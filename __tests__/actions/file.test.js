@@ -1,11 +1,17 @@
+import configureMockStore from 'redux-mock-store'
+import thunk from 'redux-thunk'
 import {
   ADD_FILE,
   ADD_DIFF_FILE,
   GENERATE_FILE,
   addFile,
   generateFile,
-  addDiffFile
+  addDiffFile,
+  createPNGFile
 } from '../../src/actions/file'
+
+const middlewares = [thunk]
+const mockStore = configureMockStore(middlewares)
 
 describe('file actions', () => {
   it('should create ADD_FILE action', () => {
@@ -32,5 +38,23 @@ describe('file actions', () => {
       payload: {}
     }
     expect(addDiffFile({})).toEqual(expectedAction)
+  })
+
+  it('should create ADD_DIFF_FILE action when createPNGFile has been done', () => {
+    const expectedAction = [
+      {
+        type: GENERATE_FILE,
+        payload: {
+          cntxt: 'before'
+        }
+      }
+    ]
+
+    const store = mockStore({})
+    const dummyImage = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAXElEQVQoU2M8c+bMf0lJSQZ84Pnz5wyMT58+/Q9iGBsbY1V79uxZBikpKYhCEAMkgK4YJgY3EaQQBJAVI7MxFMIUg2hk08lXSJTVRHmGqOABBTjM17gC/dmzZwwAO/NmWWlwfdAAAAAASUVORK5CYII='
+
+    return store.dispatch(createPNGFile('before', dummyImage)).then(() => {
+      expect(store.getActions()).toEqual(expectedAction)
+    })
   })
 })

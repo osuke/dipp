@@ -44,7 +44,7 @@ export default class DragArea extends Component {
           onDragOver={(e) => { e.preventDefault() }}
           onDrop={(e) => {
             e.preventDefault()
-            this.props.extractFile(e, this.props.cntxt)
+            this.props.extractFile(e.dataTransfer.files[0], this.props.cntxt)
           }}>
           <canvas ref="canvas" width={this.props.width} height={this.props.height}></canvas>
         </div>
@@ -57,7 +57,7 @@ export default class DragArea extends Component {
           onDragLeave={this.dragLeaveHandler.bind(this)}
           onDrop={(e) => {
             e.preventDefault()
-            this.props.extractFile(e, this.props.cntxt)
+            this.props.extractFile(e.dataTransfer.files[0], this.props.cntxt)
           }}>
           Drop an image
         </div>
