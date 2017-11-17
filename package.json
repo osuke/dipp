@@ -1,15 +1,25 @@
 {
-  "name": "img-diff",
+  "name": "dipp",
   "version": "1.0.0",
   "main": "main.js",
   "license": "MIT",
+  "author": "osuke",
   "scripts": {
     "start": "electron .",
     "build": "webpack -w",
-    "test": "jest"
+    "test": "jest",
+    "pack:osx": "build --mac --x64"
+  },
+  "build": {
+    "appId": "com.electron.dipp",
+    "mac": {
+      "target": "dmg"
+    },
+    "directories": {
+      "output": "docs"
+    }
   },
   "dependencies": {
-    "electron": "^1.7.9",
     "pixelmatch": "^4.0.2",
     "prop-types": "^15.6.0",
     "react": "15.5.0",
@@ -27,6 +37,8 @@
     "babel-preset-react": "^6.24.1",
     "css-loader": "^0.28.7",
     "csswring": "^6.0.1",
+    "electron": "^1.7.9",
+    "electron-builder": "^19.45.5",
     "eslint": "^4.9.0",
     "eslint-config-standard": "^10.2.1",
     "eslint-loader": "^1.9.0",
