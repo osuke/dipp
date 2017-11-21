@@ -1,6 +1,8 @@
 import fs from 'fs'
 import createPNG from '../utils/createPNG'
 import CreateDiffPNG from '../utils/CreateDiffPNG'
+export const FILE_TYPE_ERROR = 'FILE_TYPE_ERROR'
+export const RESET_FILE_TYPE_ERROR = 'RESET_FILE_TYPE_ERROR'
 export const ADD_FILE = 'ADD_FILE'
 export const ADD_DIFF_FILE = 'ADD_DIFF_FILE'
 export const GENERATE_FILE = 'GENERATE_FILE'
@@ -9,6 +11,18 @@ export const addFile = (data) => (
   {
     type: ADD_FILE,
     payload: data
+  }
+)
+
+export const fileTypeError = () => (
+  {
+    type: FILE_TYPE_ERROR
+  }
+)
+
+export const resetFileTypeError = () => (
+  {
+    type: RESET_FILE_TYPE_ERROR
   }
 )
 
@@ -30,34 +44,38 @@ export const addDiffFile = (data) => (
 
 export const extractFile = (data, cntxt) => (
   (dispatch) => {
-    const reader = new window.FileReader()
-    const image = new window.Image()
+    if (!data.type.match(/(png|gif|jpeg|svg)/)) {
+      dispatch(fileTypeError())
+    } else {
+      const reader = new window.FileReader()
+      const image = new window.Image()
 
-    reader.readAsDataURL(data)
-    reader.onload = (e) => {
-      image.src = e.currentTarget.result
-      image.onload = () => {
-        let imageWidth = image.width
-        let imageHeight = image.height
+      reader.readAsDataURL(data)
+      reader.onload = (e) => {
+        image.src = e.currentTarget.result
+        image.onload = () => {
+          let imageWidth = image.width
+          let imageHeight = image.height
 
-        if (imageWidth > window.innerWidth / 2) {
-          imageWidth = window.innerWidth / 2 - 20
-          imageHeight = imageWidth / image.width * imageHeight
+          if (imageWidth > window.innerWidth / 2) {
+            imageWidth = window.innerWidth / 2 - 20
+            imageHeight = imageWidth / image.width * imageHeight
+          }
+
+          if (imageHeight > window.innerHeight) {
+            imageHeight = window.innerHeight - 20
+            imageWidth = imageHeight / image.height * imageWidth
+          }
+
+          const obj = {
+            src: image,
+            width: imageWidth,
+            height: imageHeight,
+            cntxt: cntxt
+          }
+
+          dispatch(addFile(obj))
         }
-
-        if (imageHeight > window.innerHeight) {
-          imageHeight = window.innerHeight - 20
-          imageWidth = imageHeight / image.height * imageWidth
-        }
-
-        const obj = {
-          src: image,
-          width: imageWidth,
-          height: imageHeight,
-          cntxt: cntxt
-        }
-
-        dispatch(addFile(obj))
       }
     }
   }

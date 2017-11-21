@@ -36,6 +36,14 @@ export default class DragArea extends Component {
     })
   }
 
+  dropHandler (e) {
+    e.preventDefault()
+    this.setState(() => {
+      return { eventName: 'dragLeave' }
+    })
+    this.props.extractFile(e.dataTransfer.files[0], this.props.cntxt)
+  }
+
   render () {
     if (this.props.width && this.props.height) {
       return (
@@ -55,10 +63,7 @@ export default class DragArea extends Component {
           className={`${styles.container} ${styles[this.state.eventName]}`}
           onDragOver={this.dragOverHandler.bind(this)}
           onDragLeave={this.dragLeaveHandler.bind(this)}
-          onDrop={(e) => {
-            e.preventDefault()
-            this.props.extractFile(e.dataTransfer.files[0], this.props.cntxt)
-          }}>
+          onDrop={this.dropHandler.bind(this)}>
           Drop an image
         </div>
       )

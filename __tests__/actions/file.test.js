@@ -1,9 +1,13 @@
 import configureMockStore from 'redux-mock-store'
 import thunk from 'redux-thunk'
 import {
+  FILE_TYPE_ERROR,
+  RESET_FILE_TYPE_ERROR,
   ADD_FILE,
   ADD_DIFF_FILE,
   GENERATE_FILE,
+  fileTypeError,
+  resetFileTypeError,
   addFile,
   generateFile,
   addDiffFile,
@@ -14,6 +18,20 @@ const middlewares = [thunk]
 const mockStore = configureMockStore(middlewares)
 
 describe('file actions', () => {
+  it('should create FILE_TYPE_ERROR action', () => {
+    const expectedAction = {
+      type: FILE_TYPE_ERROR
+    }
+    expect(fileTypeError()).toEqual(expectedAction)
+  })
+
+  it('should create RESET_FILE_TYPE_ERROR action', () => {
+    const expectedAction = {
+      type: RESET_FILE_TYPE_ERROR
+    }
+    expect(resetFileTypeError()).toEqual(expectedAction)
+  })
+
   it('should create ADD_FILE action', () => {
     const expectedAction = {
       type: ADD_FILE,

@@ -1,6 +1,13 @@
-import { ADD_FILE, ADD_DIFF_FILE, GENERATE_FILE } from '../actions/file'
+import {
+  FILE_TYPE_ERROR,
+  RESET_FILE_TYPE_ERROR,
+  ADD_FILE,
+  ADD_DIFF_FILE,
+  GENERATE_FILE
+} from '../actions/file'
 
 const initialState = {
+  error: false,
   before: {
     obj: {},
     width: 0,
@@ -25,6 +32,14 @@ export default (state = initialState, action) => {
   let tmp = state
 
   switch (action.type) {
+    case FILE_TYPE_ERROR:
+      tmp.error = true
+      return Object.assign({}, state, tmp)
+
+    case RESET_FILE_TYPE_ERROR:
+      tmp.error = false
+      return Object.assign({}, state, tmp)
+
     case ADD_FILE:
       tmp[action.payload.cntxt].obj = action.payload.src
       tmp[action.payload.cntxt].width = action.payload.width

@@ -1,10 +1,17 @@
 import reducer from '../../src/reducers/file'
-import { ADD_FILE, ADD_DIFF_FILE, GENERATE_FILE } from '../../src/actions/file'
+import {
+  ADD_FILE,
+  ADD_DIFF_FILE,
+  GENERATE_FILE,
+  FILE_TYPE_ERROR,
+  RESET_FILE_TYPE_ERROR
+} from '../../src/actions/file'
 
 describe('app reducer', () => {
   it('should return the initialState', () => {
     expect(reducer(undefined, {})).toEqual(
       {
+        error: false,
         before: {
           obj: {},
           width: 0,
@@ -25,6 +32,30 @@ describe('app reducer', () => {
         }
       }
     )
+  })
+
+  it('should handle FILE_TYPE_ERROR', () => {
+    const addFileTypeErrorAction = {
+      type: FILE_TYPE_ERROR
+    }
+
+    expect(reducer({
+      error: false
+    }, addFileTypeErrorAction)).toEqual({
+      error: true
+    })
+  })
+
+  it('should handle RESET_FILE_TYPE_ERROR', () => {
+    const resetFileTypeErrorAction = {
+      type: RESET_FILE_TYPE_ERROR
+    }
+
+    expect(reducer({
+      error: false
+    }, resetFileTypeErrorAction)).toEqual({
+      error: false
+    })
   })
 
   it('should handle ADD_FILE', () => {

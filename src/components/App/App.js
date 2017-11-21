@@ -3,6 +3,7 @@ import resetCSS from 'reset-css/reset.css'
 import styles from './app.css'
 import DragArea from '../../containers/DragArea'
 import Loading from '../Loading/Loading'
+import Alert from '../../containers/Alert'
 import Result from '../Result/Result'
 import PropTypes from 'prop-types'
 
@@ -24,6 +25,7 @@ export default class App extends Component {
           <DragArea {...this.props.file.before} cntxt="before" />
           <DragArea {...this.props.file.after} cntxt="after" />
           <Loading {...this.props.file} />
+          <Alert {...this.props.file} />
         </div>
       )
     } else {
