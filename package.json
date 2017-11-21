@@ -17,7 +17,7 @@
       "target": "dmg"
     },
     "directories": {
-      "output": "docs"
+      "output": "dist"
     }
   },
   "dependencies": {
