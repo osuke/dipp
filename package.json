@@ -1,7 +1,7 @@
 {
   "name": "dipp",
   "version": "1.0.0",
-  "description": "Show image difference between two images",
+  "description": "A simple image diff tool.",
   "main": "main.js",
   "license": "MIT",
   "author": "osuke",
