@@ -17,7 +17,8 @@
       "target": "dmg"
     },
     "directories": {
-      "output": "dist"
+      "buildResources": "assets",
+      "output": "packed"
     }
   },
   "dependencies": {
