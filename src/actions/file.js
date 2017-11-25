@@ -1,3 +1,4 @@
+import path from 'path'
 import fs from 'fs'
 import createPNG from '../utils/createPNG'
 import CreateDiffPNG from '../utils/CreateDiffPNG'
@@ -98,7 +99,7 @@ export const createDiffFile = () => (
       })
     })()
 
-    const buff = fs.readFileSync('./tmp/diff.png')
+    const buff = fs.readFileSync(path.resolve('./tmp/diff.png'))
     const base64data = buff.toString('base64')
     let image = new window.Image()
 

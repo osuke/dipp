@@ -1,6 +1,6 @@
 {
   "name": "Dipp",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A simple image diff tool.",
   "main": "main.js",
   "license": "MIT",
@@ -9,7 +9,8 @@
     "start": "electron .",
     "build": "webpack -w",
     "test": "jest",
-    "pack:osx": "build --mac --x64"
+    "pack:osx": "build --mac --x64",
+    "pack:win": "build --win --ia32"
   },
   "build": {
     "appId": "com.electron.dipp",
